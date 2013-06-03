@@ -1,0 +1,855 @@
+---
+Applications:
+  listUsage:
+    params:
+      required: []
+      optional:
+      - application
+      - days
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/applications/listUsage.json
+    method: GET
+Blacklists:
+  add:
+    params:
+      required:
+      - forum
+      optional:
+      - domain
+      - word
+      - retroactive
+      - notes
+      - ip
+      - user
+      - email
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/blacklists/add.json
+    method: POST
+  list:
+    params:
+      required:
+      - forum
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - since_id
+      - query
+      - type
+      - order
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/blacklists/list.json
+    method: GET
+  remove:
+    params:
+      required:
+      - forum
+      optional:
+      - domain
+      - word
+      - ip
+      - user
+      - email
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/blacklists/remove.json
+    method: POST
+Categories:
+  create:
+    params:
+      required:
+      - forum
+      - title
+      optional:
+      - default
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/categories/create.json
+    method: POST
+  details:
+    params:
+      required:
+      - category
+      optional: []
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/categories/details.json
+    method: GET
+  list:
+    params:
+      required: []
+      optional:
+      - forum
+      - since_id
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/categories/list.json
+    method: GET
+  listPosts:
+    params:
+      required:
+      - category
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - query
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/categories/listPosts.json
+    method: GET
+  listThreads:
+    params:
+      required:
+      - category
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/categories/listThreads.json
+    method: GET
+Discovery:
+  listAds:
+    params:
+      required: []
+      optional:
+      - active
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/discovery/listAds.json
+    method: GET
+Exports:
+  exportForum:
+    params:
+      required:
+      - forum
+      optional:
+      - format
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/exports/exportForum.json
+    method: POST
+Forums:
+  addModerator:
+    params:
+      required:
+      - user
+      - forum
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/forums/addModerator.json
+    method: POST
+  create:
+    params:
+      required:
+      - website
+      - name
+      - short_name
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/forums/create.json
+    method: POST
+  details:
+    params:
+      required:
+      - forum
+      optional:
+      - related
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/details.json
+    method: GET
+  listCategories:
+    params:
+      required:
+      - forum
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listCategories.json
+    method: GET
+  listModerators:
+    params:
+      required:
+      - forum
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/forums/listModerators.json
+    method: GET
+  listMostActiveUsers:
+    params:
+      required:
+      - forum
+      optional:
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listMostActiveUsers.json
+    method: GET
+  listMostLikedUsers:
+    params:
+      required:
+      - forum
+      optional:
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listMostLikedUsers.json
+    method: GET
+  listPosts:
+    params:
+      required:
+      - forum
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - query
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listPosts.json
+    method: GET
+  listThreads:
+    params:
+      required:
+      - forum
+      optional:
+      - thread
+      - since
+      - related
+      - cursor
+      - limit
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listThreads.json
+    method: GET
+  listUsers:
+    params:
+      required:
+      - forum
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/forums/listUsers.json
+    method: GET
+  removeModerator:
+    params:
+      required:
+      - moderator
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/forums/removeModerator.json
+    method: POST
+Imports:
+  details:
+    params:
+      required:
+      - group
+      - forum
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/imports/details.json
+    method: GET
+  list:
+    params:
+      required:
+      - forum
+      optional:
+      - cursor
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/imports/list.json
+    method: GET
+Posts:
+  approve:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/approve.json
+    method: POST
+  create:
+    params:
+      required:
+      - message
+      optional:
+      - parent
+      - thread
+      - author_email
+      - author_name
+      - state
+      - author_url
+      - date
+      - ip_address
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/create.json
+    method: POST
+  details:
+    params:
+      required:
+      - post
+      optional:
+      - related
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/details.json
+    method: GET
+  getContext:
+    params:
+      required:
+      - post
+      optional:
+      - depth
+      - related
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/getContext.json
+    method: GET
+  highlight:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/highlight.json
+    method: POST
+  list:
+    params:
+      required: []
+      optional:
+      - category
+      - thread
+      - forum
+      - since
+      - related
+      - cursor
+      - limit
+      - offset
+      - query
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/list.json
+    method: GET
+  listPopular:
+    params:
+      required: []
+      optional:
+      - category
+      - interval
+      - thread
+      - forum
+      - since
+      - related
+      - limit
+      - offset
+      - query
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/listPopular.json
+    method: GET
+  remove:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/remove.json
+    method: POST
+  report:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/report.json
+    method: POST
+  restore:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/restore.json
+    method: POST
+  spam:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/spam.json
+    method: POST
+  unhighlight:
+    params:
+      required:
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/unhighlight.json
+    method: POST
+  update:
+    params:
+      required:
+      - message
+      - post
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/posts/update.json
+    method: POST
+  vote:
+    params:
+      required:
+      - vote
+      - post
+      optional: []
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/posts/vote.json
+    method: POST
+Reactions:
+  details:
+    params:
+      required:
+      - reaction
+      - forum
+      optional: []
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/reactions/details.json
+    method: GET
+  list:
+    params:
+      required:
+      - forum
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - related
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/reactions/list.json
+    method: POST, GET
+  remove:
+    params:
+      required:
+      - reaction
+      - forum
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/reactions/remove.json
+    method: POST
+  restore:
+    params:
+      required:
+      - reaction
+      - forum
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/reactions/restore.json
+    method: POST
+Reports:
+  domains:
+    params:
+      required: []
+      optional:
+      - limit
+      - page
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/reports/domains.json
+    method: GET
+  threads:
+    params:
+      required: []
+      optional:
+      - limit
+      - page
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/reports/threads.json
+    method: GET
+Threads:
+  close:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/close.json
+    method: POST
+  create:
+    params:
+      required:
+      - forum
+      - title
+      optional:
+      - category
+      - url
+      - date
+      - message
+      - identifier
+      - slug
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/create.json
+    method: POST
+  details:
+    params:
+      required:
+      - thread
+      optional:
+      - related
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/details.json
+    method: GET
+  list:
+    params:
+      required: []
+      optional:
+      - category
+      - forum
+      - thread
+      - author
+      - since
+      - related
+      - cursor
+      - limit
+      - include
+      - order
+      - thread:ident
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/list.json
+    method: GET
+  listHot:
+    params:
+      required: []
+      optional:
+      - category
+      - forum
+      - author
+      - related
+      - limit
+      - include
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/listHot.json
+    method: GET
+  listPopular:
+    params:
+      required: []
+      optional:
+      - category
+      - interval
+      - forum
+      - author
+      - since
+      - related
+      - limit
+      - with_top_post
+      - include
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/listPopular.json
+    method: GET
+  listPosts:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+      - since
+      - related
+      - cursor
+      - limit
+      - query
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/listPosts.json
+    method: GET
+  listReactions:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+      - cursor
+      - limit
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/listReactions.json
+    method: GET
+  open:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/open.json
+    method: POST
+  remove:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/remove.json
+    method: POST
+  restore:
+    params:
+      required:
+      - thread
+      optional:
+      - forum
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/restore.json
+    method: POST
+  set:
+    params:
+      required:
+      - thread
+      optional:
+      - related
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/set.json
+    method: GET
+  subscribe:
+    params:
+      required:
+      - thread
+      optional:
+      - email
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/subscribe.json
+    method: POST
+  unsubscribe:
+    params:
+      required:
+      - thread
+      optional:
+      - email
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/unsubscribe.json
+    method: POST
+  update:
+    params:
+      required:
+      - thread
+      optional:
+      - category
+      - forum
+      - title
+      - url
+      - author
+      - message
+      - identifier
+      - slug
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/threads/update.json
+    method: POST
+  vote:
+    params:
+      required:
+      - vote
+      - thread
+      optional:
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/threads/vote.json
+    method: POST
+Trends:
+  listThreads:
+    params:
+      required: []
+      optional:
+      - limit
+      - related
+      - forum
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/trends/listThreads.json
+    method: GET
+Users:
+  checkUsername:
+    params:
+      required: []
+      optional:
+      - username
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/users/checkUsername.json
+    method: POST
+  details:
+    params:
+      required: []
+      optional:
+      - user
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/details.json
+    method: GET
+  follow:
+    params:
+      required:
+      - target
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/users/follow.json
+    method: POST
+  listActiveForums:
+    params:
+      required: []
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - user
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listActiveForums.json
+    method: GET
+  listActiveThreads:
+    params:
+      required: []
+      optional:
+      - forum
+      - since
+      - related
+      - cursor
+      - limit
+      - user
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listActiveThreads.json
+    method: GET
+  listActivity:
+    params:
+      required: []
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - user
+      - query
+      - include
+      - anon_user
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listActivity.json
+    method: GET
+  listFollowers:
+    params:
+      required: []
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - user
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listFollowers.json
+    method: GET
+  listFollowing:
+    params:
+      required: []
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - user
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listFollowing.json
+    method: GET
+  listForums:
+    params:
+      required: []
+      optional:
+      - since_id
+      - cursor
+      - limit
+      - user
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listForums.json
+    method: GET
+  listMostActiveForums:
+    params:
+      required: []
+      optional:
+      - limit
+      - user
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listMostActiveForums.json
+    method: GET
+  listPosts:
+    params:
+      required: []
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - user
+      - include
+      - order
+    requires_authentication: false
+    url: https://disqus.com/api/3.0/users/listPosts.json
+    method: GET
+  unfollow:
+    params:
+      required:
+      - target
+      optional: []
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/users/unfollow.json
+    method: POST
+Whitelists:
+  add:
+    params:
+      required:
+      - forum
+      optional:
+      - notes
+      - email
+      - user
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/whitelists/add.json
+    method: POST
+  list:
+    params:
+      required:
+      - forum
+      optional:
+      - since
+      - related
+      - cursor
+      - limit
+      - since_id
+      - query
+      - type
+      - order
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/whitelists/list.json
+    method: GET
+  remove:
+    params:
+      required:
+      - forum
+      optional:
+      - email
+      - user
+    requires_authentication: true
+    url: https://disqus.com/api/3.0/whitelists/remove.json
+    method: POST
