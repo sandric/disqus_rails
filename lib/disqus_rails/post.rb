@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class Post < Model
     attr_accessor :id,
                   :isJuliaFlagged,

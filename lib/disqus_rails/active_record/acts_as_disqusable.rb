@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   module Disqusable
     class Railtie < Rails::Railtie
       initializer 'acts_as_disqusable.extend_active_record' do
@@ -15,7 +15,7 @@ module Disqus
     module ActsAsDisqusable
 
       def disqus_thread
-        Disqus::Thread.find_by_ident(self.id)
+        DisqusRails::Thread.find_by_ident(self.id)
       end
 
       def self.included(disqusable)

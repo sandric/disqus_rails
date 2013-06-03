@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class Thread < Model
     attr_accessor :id,
                   :title,
@@ -67,7 +67,7 @@ module Disqus
       end
 
       def find_by_ident(disqusable_id)
-        Disqus::Thread.where(:forum => Disqus::SHORT_NAME, :"thread:ident" => disqusable_id).first
+        DisqusRails::Thread.where(:forum => DisqusRails::SHORT_NAME, :"thread:ident" => disqusable_id).first
       end
     end
 

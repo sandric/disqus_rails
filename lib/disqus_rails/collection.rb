@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class Collection
 
     include Enumerable
@@ -29,7 +29,7 @@ module Disqus
 
       @items = []
       results[:response].each do |item|
-        @items << Disqus.const_get(self.class.name.singularize.split(/::/).last).new(item)
+        @items << DisqusRails.const_get(self.class.name.singularize.split(/::/).last).new(item)
       end
     end
 
@@ -86,6 +86,6 @@ module Disqus
   end
 
   %w[Posts Threads Categories Forums Users].each do |subclass|
-    instance_eval "class Disqus::#{subclass} < Collection; end"
+    instance_eval "class DisqusRails::#{subclass} < Collection; end"
   end
 end

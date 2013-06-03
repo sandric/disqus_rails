@@ -15,5 +15,5 @@ module DisqusRails
 end
 
 module ApplicationHelper
-  include Disqus::Helpers
+  include DisqusRails::Helpers
 end

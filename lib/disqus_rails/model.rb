@@ -1,10 +1,10 @@
-module Disqus
+module DisqusRails
   class Model
 
     def self.inherited(subclass)
       subclass_name = subclass.name.split(/::/).last
       api_name = Api.const_get subclass_name.pluralize
-      collection_name = Disqus.const_get subclass_name.pluralize
+      collection_name = DisqusRails.const_get subclass_name.pluralize
 
       subclass.class_exec do
 

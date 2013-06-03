@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class User < Model
     attr_accessor :id,
                   :username,

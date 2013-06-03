@@ -8,7 +8,7 @@ require 'active_support/core_ext/string'
 
 module DisqusRails
   module Api
-    requests = ActiveSupport::HashWithIndifferentAccess.new YAML::load(File.open(File.join(File.dirname(__FILE__), "api.yml", file)))
+    requests = ActiveSupport::HashWithIndifferentAccess.new YAML::load(File.open(File.join(File.dirname(__FILE__), "api.yml")))
 
     requests.each do |section_name, section|
       const = const_set(section_name, Class.new)
@@ -19,19 +19,19 @@ module DisqusRails
 
           method[:params][:required].each do |required_method_name|
             unless arguments[0].has_key?(required_method_name.to_sym)
-              raise "Required parameter '#{required_method_name}' not passed to Disqus::Api::#{section_name}.#{method_name}"
+              raise "Required parameter '#{required_method_name}' not passed to DisqusRails::Api::#{section_name}.#{method_name}"
             end
           end
 
           unless (unknown_params = arguments[0].stringify_keys!.keys - (method[:params][:required] + method[:params][:optional])).empty?
-            raise "Unknown #{"param".pluralize unknown_params.size} '#{unknown_params.join " "}' passed to Disqus::Api::#{section_name}.#{method_name}"
+            raise "Unknown #{"param".pluralize unknown_params.size} '#{unknown_params.join " "}' passed to DisqusRails::Api::#{section_name}.#{method_name}"
           end
 
           arguments[0][:api_key] = PUBLIC_KEY
           if method[:requires_authentication]
             arguments[0][:access_token] = ACCESS_TOKEN
           end
-          response = Disqus::Api.send method[:method].downcase, arguments[0], method[:url]
+          response = DisqusRails::Api.send method[:method].downcase, arguments[0], method[:url]
 
           arguments[0].delete(:api_key)
           arguments[0].delete(:access_token)

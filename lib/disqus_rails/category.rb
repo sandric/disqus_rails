@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class Category < Model
     attr_accessor :id
                   :title
