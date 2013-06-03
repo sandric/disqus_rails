@@ -12,6 +12,11 @@ module DisqusRails
   def self.setup
     yield self
   end
+
+  module Rails
+    class Engine < ::Rails::Engine
+    end
+  end
 end
 
 module ApplicationHelper
