@@ -6,11 +6,11 @@ require 'disqus_rails/version'
 Gem::Specification.new do |spec|
   spec.name          = "disqus_rails"
   spec.version       = DisqusRails::VERSION
-  spec.authors       = ["Anton Kirichenko"]
-  spec.email         = ["a.kirichenko@111min.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["Anton Kyrychenko"]
+  spec.email         = ["kyrychenkoanton@gmail.com"]
+  spec.description   = "Disqus 2012 Ruby on Rails wrapper"
+  spec.summary       = "Integrates disqus comments service into your RoR application"
+  spec.homepage      = "https://github.com/sandric/disqus_rails"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
