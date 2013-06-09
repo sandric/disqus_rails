@@ -52,22 +52,23 @@ module DisqusRails
     end
 
     class << self
-      def self.find_by_ids(attributes=[])
-        Threads.new :Threads, :set, attributes
-      end
 
-      def self.hot(attributes)
-        attributes[:forum] = forum
-        Threads.new :Threads, :listHot, attributes
-      end
-
-      def self.popular(attributes)
-        attributes[:forum] = forum
+      def popular(attributes={})
+        attributes[:forum] = @forum
         Threads.new :Threads, :listPopular, attributes
       end
 
+      def hot(attributes={})
+        attributes[:forum] = @forum
+        Threads.new :Threads, :listHot, attributes
+      end
+
+      def find_by_ids(attributes={})
+        Threads.new :Threads, :set, attributes
+      end
+
       def find_by_ident(disqusable_id)
-        DisqusRails::Thread.where(:forum => DisqusRails::SHORT_NAME, :"thread:ident" => disqusable_id).first
+        Thread.where(:forum => @forum, :"thread:ident" => disqusable_id).first
       end
     end
 
@@ -76,12 +77,28 @@ module DisqusRails
       Posts.new :Threads, :listPosts, attributes
     end
 
-    def remove
-      update_attributes Api::Threads.remove(:thread => self.id)[:response][0]
-    end
-
     def create(attributes={})
       update_attributes Api::Threads.create(attributes)
+    end
+
+    def open
+      if Api::Threads.open(:thread => self.id)
+        update_attributes :isClosed => false
+      end
+    end
+
+    def close
+      if Api::Threads.close(:thread => self.id)
+        update_attributes :isClosed => true
+      end
+    end
+
+    def subscribe(email=nil)
+      Api::Threads.subscribe(:thread => self.id, :email => email)
+    end
+
+    def unsubscribe(email=nil)
+      Api::Threads.unsubscribe(:thread => self.id, :email => email)
     end
 
     def update(attributes={})
@@ -89,25 +106,25 @@ module DisqusRails
       update_attributes Api::Threads.update(attributes)[:response]
     end
 
-    def open
-      update_attributes Api::Threads.open(:thread => self.id)
-    end
-
-    def close
-      update_attributes Api::Threads.close(:thread => self.id)
+    def remove
+      update_attributes Api::Threads.remove(:thread => self.id)[:response][0]
     end
 
     def restore
       update_attributes Api::Threads.restore(:thread => self.id)
     end
 
-    def subscribe(email=nil)
-      update_attributes Api::Threads.subscribe(:thread => self.id, :email => email)
+    def vote=(vote)
+      @vote = vote
     end
-
-    def unsubscribe(email=nil)
-      update_attributes Api::Threads.unsubscribe(:thread => self.id, :email => email)
+    def vote(*args)
+      if args.empty?
+        @vote
+      else
+        if Api::Threads.vote(:thread => self.id, :vote => args.first)
+          update_attributes :vote => args.first
+        end
+      end
     end
-
   end
 end

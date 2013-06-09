@@ -30,20 +30,36 @@ module DisqusRails
 
     end
 
+    def initialize(attributes={})
+      attributes.each do |attr_name, attr_value|
+        if attr_name == "author"
+          @author = DisqusRails::User.new(attr_value)
+        else
+          instance_variable_set("@#{attr_name}".to_sym, attr_value)
+        end
+      end
+    end
+
     def update(message)
-      update_attributes Api::Posts.approve(:post => self.id, :message => message)
+      update_attributes Api::Posts.update(:post => self.id, :message => message)[:response]
     end
 
     def remove
-      update_attributes Api::Posts.remove(:post => self.id)
+      if Api::Posts.remove(:post => self.id)
+        update_attributes :isDeleted => true
+      end
     end
 
     def restore
-      update_attributes Api::Posts.restore(:post => self.id)
+      if Api::Posts.restore(:post => self.id)
+        update_attributes :isDeleted => false
+      end
     end
 
     def approve
-      update_attributes Api::Posts.approve(:post => self.id)
+      if Api::Posts.approve(:post => self.id)
+        update_attributes :isApproved => true
+      end
     end
 
     def getContext(depth = nil, related = nil)
@@ -51,24 +67,40 @@ module DisqusRails
     end
 
     def spam
-      update_attributes Api::Posts.spam(:post => self.id)
+      if Api::Posts.spam(:post => self.id)
+        update_attributes :isSpam => true
+      end
     end
 
     def report
-      update_attributes Api::Posts.report(:post => self.id)
+      if Api::Posts.report(:post => self.id)
+        update_attributes :isFlagged => true
+      end
     end
 
     def highlight
-      update_attributes Api::Posts.highlight(:post => self.id)
+      if Api::Posts.highlight(:post => self.id)
+        update_attributes :isHighlighted => true
+      end
     end
 
     def unhighlight
-      update_attributes Api::Posts.unhighlight(:post => self.id)
+      if Api::Posts.unhighlight(:post => self.id)
+        update_attributes :isHighlighted => false
+      end
     end
 
-    def vote(vote)
-      update_attributes Api::Posts.vote(:post => self.id, :vote => vote)
+    def vote=(vote)
+      @vote = vote
     end
-
+    def vote(*args)
+      if args.empty?
+        @vote
+      else
+        if Api::Posts.vote(:post => self.id, :vote => args.first)
+          update_attributes :vote => args.first
+        end
+      end
+    end
   end
 end

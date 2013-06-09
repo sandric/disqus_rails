@@ -62,7 +62,7 @@ Categories:
       - title
       optional:
       - default
-    requires_authentication: false
+    requires_authentication: true
     url: https://disqus.com/api/3.0/categories/create.json
     method: POST
   details:
@@ -294,7 +294,7 @@ Posts:
       - author_url
       - date
       - ip_address
-    requires_authentication: false
+    requires_authentication: true
     url: https://disqus.com/api/3.0/posts/create.json
     method: POST
   details:
@@ -632,7 +632,7 @@ Threads:
       - thread
       optional:
       - email
-    requires_authentication: false
+    requires_authentication: true
     url: https://disqus.com/api/3.0/threads/subscribe.json
     method: POST
   unsubscribe:
@@ -641,7 +641,7 @@ Threads:
       - thread
       optional:
       - email
-    requires_authentication: false
+    requires_authentication: true
     url: https://disqus.com/api/3.0/threads/unsubscribe.json
     method: POST
   update:

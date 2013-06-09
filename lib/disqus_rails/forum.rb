@@ -42,10 +42,6 @@ module DisqusRails
       Users.new :Forums, :listMostLikedUsers, attributes
     end
 
-    def moderators
-      Users.new :Forums, :listModerators, attributes
-    end
-
     def add_moderator(user_id)
       update_attributes Api::Forums.add_moderator(:forum => self.id, :user => user_id)
     end

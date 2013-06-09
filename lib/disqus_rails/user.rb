@@ -45,11 +45,6 @@ module DisqusRails
       Forums.new :Users, :listActiveForums, attributes
     end
 
-    def most_active_forums(attributes={})
-      attributes[:user] = self.id
-      Forums.new :Users, :listMostActiveForums, attributes
-    end
-
     def active_threads(attributes={})
       attributes[:user] = self.id
       Threads.new :Users, :listActiveThreads, attributes

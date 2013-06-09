@@ -18,7 +18,7 @@ module DisqusRails
       end
     end
 
-    def initialize(api_class_name, method, attributes)
+    def initialize(api_class_name, method = :list, attributes = {})
       @api_class_name = api_class_name
       @method = method
       @attributes = attributes
@@ -42,7 +42,6 @@ module DisqusRails
         end
       end
     end
-
 
     def has_cursor_next?
       @cursor[:hasNext]
@@ -86,6 +85,6 @@ module DisqusRails
   end
 
   %w[Posts Threads Categories Forums Users].each do |subclass|
-    instance_eval "class DisqusRails::#{subclass} < Collection; end"
+    instance_eval "class DisqusRails::#{subclass} < DisqusRails::Collection; end"
   end
 end

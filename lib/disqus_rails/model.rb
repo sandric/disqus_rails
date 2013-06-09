@@ -1,4 +1,4 @@
-module DisqusRails
+module Disqus
   class Model
 
     def self.inherited(subclass)
@@ -12,8 +12,16 @@ module DisqusRails
           new(api_name.details(subclass_name.downcase.to_sym => id)[:response])
         end
 
-        define_singleton_method :where do |attributes={}|
-          collection_name.new subclass_name.pluralize.to_sym, :list, attributes
+        if api_name.respond_to?(:list)
+          define_singleton_method :where do |attributes={}|
+            collection_name.new subclass_name.pluralize.to_sym, :list, attributes
+          end
+        end
+
+        if api_name.respond_to?(:create)
+          define_singleton_method :create do |attributes={}|
+            subclass.new(api_name.create(attributes)[:response])
+          end
         end
 
         define_method :reload do

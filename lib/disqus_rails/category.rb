@@ -7,12 +7,6 @@ module DisqusRails
 
                   :category
 
-    class << self
-      def popular(attributes={})
-        Categories.new :Categories, :listPopular, attributes
-      end
-    end
-
     def threads(attributes={})
       attributes[:category] = self.id
       Threads.new :Categories, :listThreads, attributes
@@ -22,6 +16,5 @@ module DisqusRails
       attributes[:category] = self.id
       Posts.new :Categories, :listPosts, attributes
     end
-    
   end
 end
