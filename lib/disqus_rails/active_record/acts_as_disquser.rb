@@ -1,11 +1,5 @@
 module DisqusRails
   module Disquser
-    class Railtie < Rails::Railtie
-      initializer 'acts_as_disquser.extend_active_record' do
-        ::ActiveRecord::Base.extend ActiveRecordMethods
-      end
-    end
-
     module ActiveRecordMethods
       def acts_as_disquser(attributes={})
 

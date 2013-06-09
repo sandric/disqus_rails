@@ -1,11 +1,5 @@
 module DisqusRails
   module Disqusable
-    class Railtie < Rails::Railtie
-      initializer 'acts_as_disqusable.extend_active_record' do
-        ::ActiveRecord::Base.extend ActiveRecordMethods
-      end
-    end
-
     module ActiveRecordMethods
       def acts_as_disqusable
         include ActsAsDisqusable

@@ -9,13 +9,20 @@ end
 end
 
 module DisqusRails
-  def self.setup
-    yield self
-  end
-
   module Rails
     class Engine < ::Rails::Engine
+      initializer 'acts_as_disqusable.extend_active_record' do
+        ::ActiveRecord::Base.extend DisqusRails::Disqusable::ActiveRecordMethods
+      end
+
+      initializer 'acts_as_disquser.extend_active_record' do
+        ::ActiveRecord::Base.extend DisqusRails::Disquser::ActiveRecordMethods
+      end
     end
+  end
+
+  def self.setup
+    yield self
   end
 end
 

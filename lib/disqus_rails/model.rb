@@ -1,4 +1,4 @@
-module Disqus
+module DisqusRails
   class Model
 
     def self.inherited(subclass)
