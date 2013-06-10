@@ -56,7 +56,8 @@ module DisqusRails
 
 
     def disqus_thread(disqusable_id=nil, disqusable_title=nil)
-      javascript_tag %Q"$(document).ready(function(){
+      concat content_tag(:div, "", :id => "disqus_thread")
+      concat javascript_tag %Q"$(document).ready(function(){
                           disqus_rails.draw_thread(\"#{disqusable_id}\", \"#{disqusable_title}\");
                         });"
     end
