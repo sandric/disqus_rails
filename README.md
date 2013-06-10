@@ -126,7 +126,7 @@ Collections, as you may guess, is a list of similar Models. Its inherited from E
 number of collection - 'DisqusRails::Forums', 'DisqusRails::Categories', 'DisqusRails::Threads', 'DisqusRails::Posts' and 'DisqusRails::Users'.
 Here some examples:
 ```ruby
-user = DisqusRails.User.find(:user => "user_id")
+user = DisqusRails::User.find(:user => "user_id")
 user.active_threads(:limit => 50)[15].posts.each do |post|
   post.update(:message => "my post is nothing comparing to #{user.username} writings...")
 end
@@ -155,7 +155,7 @@ The difference is in returned values - method with bang in the end initializes n
 when method without it - just returns new collection.
 Also, each collection has singleton method 'find_all_#collection_class_name#!' that will get all results for query:
 ```ruby
-threads = Disqus::Thread.where(:forum => "forum_name", :limit => 100).find_all_threads!
+threads = DisqusRails::Thread.where(:forum => "forum_name", :limit => 100).find_all_threads!
 ```
 
 ###Connection to ActiveRecord models
@@ -197,7 +197,7 @@ This work also in opposite direction - after you include 'acts_as_disqusable' in
 instances you will have method 'disqusable' what will return your model instance that is linked to Disqus thread via 'ident' identificator.
 As an example lets say that we want to get all threads from Disqus service and update comments_count attribute in Content model:
 ```ruby
-DisqusRails.Thread.where().find_all_threads!.each do |thread|
+DisqusRails::Thread.where().find_all_threads!.each do |thread|
   thread.disqusable.comments_count = thread.posts_count
   thread.disqusable.save()
 end
