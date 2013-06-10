@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Anton Kyrychenko"]
   spec.email         = ["kyrychenkoanton@gmail.com"]
   spec.description   = "Disqus 2012 Ruby on Rails wrapper"
-  spec.summary       = "Integrates disqus comments service into your RoR application"
+  spec.summary       = "Integrates Disqus service into your Ruby on Rails application"
   spec.homepage      = "https://github.com/sandric/disqus_rails"
   spec.license       = "MIT"
 
