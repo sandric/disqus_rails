@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/sandric/disqus_rails.svg?branch=master)](http://travis-ci.org/sandric/disqus_rails)
 [![Code Climate](https://codeclimate.com/github/sandric/disqus_rails.png)](https://codeclimate.com/github/sandric/disqus_rails)
+[![Dependency Status](https://gemnasium.com/sandric/disqus_rails.png)](https://gemnasium.com/sandric/disqus_rails)
+
 DisqusRails is a gem for including [Disqus](http://disqus.com/) service into Ruby on Rails application.
 
 ## Installation
