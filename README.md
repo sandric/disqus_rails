@@ -42,7 +42,7 @@ In your layout file place 'disqus_init' helper:
 ```
 In your view, where you want to display Disqus thread, place 'disqus_thread' helper:
 ```erb
-<%= disqus_thread %>
+<%- disqus_thread %>
 ```
 And you are ready to go.
 
@@ -60,7 +60,7 @@ This is for ajax-heavy sites, read more [here](http://help.disqus.com/customer/p
 
 'disqus_thread' has two params - first is 'ident' identifier and the second is title:
 ```erb
-<%= disqus_thread 1, "some title, that will preferred to document.title"  %>
+<%- disqus_thread 1, "some title, that will preferred to document.title"  %>
 ```
 
 ###Api
