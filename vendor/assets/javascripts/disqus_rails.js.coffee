@@ -67,6 +67,7 @@ class @DisqusRails
     @disqusable_title = disqusable_title
 
     window.disqus_shortname = @short_name
+    window.disqus_identifier = @disqusable_id if @disqusable_id
     window.disqus_title = @disqusable_title || document.title
 
     (->
