@@ -42,8 +42,8 @@ class @DisqusRails
       @callbacks.onInit = [->
         $(document).trigger "disqus:on_init"
       ]
-      @callbacks.onNewComment = [->
-        $(document).trigger "disqus:on_new_comment"
+      @callbacks.onNewComment = [ (comment) ->
+        $(document).trigger "disqus:on_new_comment", [comment]
       ]
       @callbacks.onPaginate = [->
         $(document).trigger "disqus:on_paginate"
