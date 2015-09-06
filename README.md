@@ -188,7 +188,7 @@ end
 ```
 Your model's details view
 ```erb
-<%= disqus_thread @content.id %>
+<%- disqus_thread @content.id %>
 
 ```
 And now, when you run this
