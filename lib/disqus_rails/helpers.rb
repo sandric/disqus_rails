@@ -47,7 +47,7 @@ module DisqusRails
       timestamp = Time.now.to_i
 
       # generate our hmac signature
-      digest  = OpenSSL::Digest::Digest.new('sha1')
+      digest  = OpenSSL::Digest.new('sha1')
       signature = OpenSSL::HMAC.hexdigest(digest, SECRET_KEY, "#{message} #{timestamp}")
 
       # return a script tag to insert the sso message
