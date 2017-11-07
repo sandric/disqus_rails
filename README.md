@@ -6,6 +6,8 @@
 
 DisqusRails is a gem for including [Disqus](http://disqus.com/) service into Ruby on Rails application.
 
+## Not Maintained
+
 ## Installation
 
 Add this line to your application's Gemfile:
