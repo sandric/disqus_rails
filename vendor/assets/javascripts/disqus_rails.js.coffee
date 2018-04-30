@@ -42,8 +42,8 @@ class @DisqusRails
       @callbacks.onInit = [->
         $(document).trigger "disqus:on_init"
       ]
-      @callbacks.onNewComment = [->
-        $(document).trigger "disqus:on_new_comment"
+      @callbacks.onNewComment = [ (comment) ->
+        $(document).trigger "disqus:on_new_comment", [comment]
       ]
       @callbacks.onPaginate = [->
         $(document).trigger "disqus:on_paginate"
@@ -67,6 +67,7 @@ class @DisqusRails
     @disqusable_title = disqusable_title
 
     window.disqus_shortname = @short_name
+    window.disqus_identifier = @disqusable_id if @disqusable_id
     window.disqus_title = @disqusable_title || document.title
 
     (->
