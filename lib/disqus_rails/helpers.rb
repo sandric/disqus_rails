@@ -6,23 +6,23 @@ module DisqusRails
 
     def disqus_init(attributes={})
       if attributes.has_key?(:short_name)
-        DisqusRails.const_set('SHORT_NAME', attributes[:short_name])
+        DisqusRails.const_set('SHORT_NAME', attributes[:short_name]) unless DisqusRails.const_defined? 'SHORT_NAME'
       else
         attributes[:short_name] = DisqusRails::SHORT_NAME
       end
 
       if attributes.has_key?(:public_key)
-        DisqusRails.const_set('PUBLIC_KEY', attributes[:public_key])
+        DisqusRails.const_set('PUBLIC_KEY', attributes[:public_key]) unless DisqusRails.const_defined? 'PUBLIC_KEY'
       else
         attributes[:public_key] = DisqusRails::PUBLIC_KEY
       end
 
       if attributes.has_key?(:secret_key)
-        DisqusRails.const_set('SECRET_KEY', attributes[:secret_key])
+        DisqusRails.const_set('SECRET_KEY', attributes[:secret_key]) unless DisqusRails.const_defined? 'SECRET_KEY'
       end
 
       if attributes.has_key?(:access_token)
-        DisqusRails.const_set('ACCESS_TOKEN', attributes[:access_token])
+        DisqusRails.const_set('ACCESS_TOKEN', attributes[:access_token]) unless DisqusRails.const_defined? 'ACCESS_TOKEN'
       end
 
       if attributes.has_key?(:disquser) && attributes[:disquser].respond_to?(:disqus_params)
