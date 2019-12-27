@@ -11,12 +11,16 @@ end
 module DisqusRails
   module Rails
     class Engine < ::Rails::Engine
-      initializer 'acts_as_disqusable.extend_active_record' do
-        ::ActiveRecord::Base.extend DisqusRails::Disqusable::ActiveRecordMethods
-      end
+      # Check for presence of the ActiveRecord::Base class
+      if 'constant' == defined?(::ActiveRecord::Base) &&
+          Class == ::ActiveRecord::Base.class
+        initializer 'acts_as_disqusable.extend_active_record' do
+          ::ActiveRecord::Base.extend DisqusRails::Disqusable::ActiveRecordMethods
+        end
 
-      initializer 'acts_as_disquser.extend_active_record' do
-        ::ActiveRecord::Base.extend DisqusRails::Disquser::ActiveRecordMethods
+        initializer 'acts_as_disquser.extend_active_record' do
+          ::ActiveRecord::Base.extend DisqusRails::Disquser::ActiveRecordMethods
+        end
       end
     end
   end
